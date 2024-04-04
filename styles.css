@@ -1,0 +1,102 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.container .navbar{
+    display: flex;
+    height: 90px;
+    width: 100%;
+    background-color:  #aad69c;
+    gap: 30px;
+}
+.navbar .cont{
+    display: flex;
+    gap: 30px;
+    padding-left: 800px;
+    padding-top: 30px;
+    font-size: 22px;
+}
+.cont a{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #294B29;
+}
+.navbar a:hover{
+    text-decoration: underline;
+    color: beige;
+}
+
+.scrap_area{
+    background-color:#f9fff0;
+    height: 500px;
+    width: 100vw;
+    background-image: url(janwar.jpg);
+    background-repeat: no-repeat;
+    background-size:cover ;
+
+}
+.area_for_aboutus{
+    height: 100vh;
+    background-color: #aad69c;
+    width: 100vw;
+
+
+}
+.aboutus_info pre{
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.aboutus_info{
+    display: flex;
+    justify-content: space-around;
+
+}
+.about_us_photo{
+    filter: grayscale(2);
+    border-radius: 10px;
+    }
+
+.about_us_photo:hover{
+    filter: grayscale(0);
+   
+
+
+}
+.aboutus_information pre{
+    color:#355e3b;
+
+}
+
+
+.connect_header{
+    background-color:#f9fff0;
+    height: 400px;
+    width: 100vw;
+
+
+}
+.connect_header h2{
+    font-size: 60px;
+    color: darkolivegreen;
+
+}
+
+
+.connect_header .email{
+    font-size: 45px;
+}
+
+
+.about_us_photo .photo{
+    border-radius: 30px;
+}
+
+
+@media only screen and (min-width=600px){
+    .container .navbar{
+        display: flex;
+        flex-direction: column;
+    }
+}

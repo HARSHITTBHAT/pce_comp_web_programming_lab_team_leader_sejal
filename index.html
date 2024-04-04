@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Page</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <style>
+    body {
+      background-image: url('https://imgs.search.brave.com/ncNnRYNHkkZlrN82cjYe5CrqTQ4ufGlNYxWG32E_jj0/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zdDUu/ZGVwb3NpdHBob3Rv/cy5jb20vMTAxODcy/OC82Nzk5Ny9pLzQ1/MC9kZXBvc2l0cGhv/dG9zXzY3OTk3MDcz/Mi1zdG9jay1waG90/by1ncm91cC13aWxk/bGlmZS1hbmltYWxz/LWp1bmdsZS10b2dl/dGhlci5qcGc');
+      background-size: cover; 
+      background-position: center; 
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading text-center">
+            <h1>Registration Form</h1>
+          </div>
+          <div class="panel-body">
+            <form action="connect.php" method="post" id="registrationForm">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" name="firstName" id="firstName">
+                <span id="firstNameError" class="text-danger"></span>
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" name="lastName" id="lastName">
+                <span id="lastNameError" class="text-danger"></span>
+              </div>
+              <div class="form-group">
+                <label>Gender</label>
+                <div>
+                  <label><input type="radio" name="gender" value="m"> Male</label>
+                  <label><input type="radio" name="gender" value="f"> Female</label>
+                  <label><input type="radio" name="gender" value="o"> Others</label>
+                  <span id="genderError" class="text-danger"></span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email" id="email">
+                <span id="emailError" class="text-danger"></span>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" id="password">
+                <span id="passwordError" class="text-danger"></span>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" class="form-control" name="number" id="number">
+                <span id="numberError" class="text-danger"></span>
+              </div>
+              <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+          </div>
+          <div class="panel-footer text-right">
+            <small>&copy; Register here</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      var firstName = document.getElementById('firstName').value.trim();
+      var lastName = document.getElementById('lastName').value.trim();
+      var gender = document.querySelector('input[name="gender"]:checked');
+      var email = document.getElementById('email').value.trim();
+      var password = document.getElementById('password').value.trim();
+      var number = document.getElementById('number').value.trim();
+
+      // Reset error messages
+      document.getElementById('firstNameError').textContent = '';
+      document.getElementById('lastNameError').textContent = '';
+      document.getElementById('genderError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('passwordError').textContent = '';
+      document.getElementById('numberError').textContent = '';
+
+      // Validation
+      var isValid = true;
+
+      if (!firstName) {
+        document.getElementById('firstNameError').textContent = 'First Name is required';
+        isValid = false;
+      } else if (!isValidName(firstName)) {
+        document.getElementById('firstNameError').textContent = 'First Name should contain only letters';
+        isValid = false;
+      }
+
+      if (!lastName) {
+        document.getElementById('lastNameError').textContent = 'Last Name is required';
+        isValid = false;
+      } else if (!isValidName(lastName)) {
+        document.getElementById('lastNameError').textContent = 'Last Name should contain only letters';
+        isValid = false;
+      }
+
+      if (!gender) {
+        document.getElementById('genderError').textContent = 'Gender is required';
+        isValid = false;
+      }
+
+      if (!email) {
+        document.getElementById('emailError').textContent = 'Email is required';
+        isValid = false;
+      } else if (!isValidEmail(email)) {
+        document.getElementById('emailError').textContent = 'Enter a valid email address';
+        isValid = false;
+      }
+
+      if (!password) {
+        document.getElementById('passwordError').textContent = 'Password is required';
+        isValid = false;
+      }
+
+      if (!number) {
+        document.getElementById('numberError').textContent = 'Phone Number is required';
+        isValid = false;
+      } else if (!isValidNumber(number)) {
+        document.getElementById('numberError').textContent = 'Enter a valid phone number';
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Form is valid, submit it
+        this.submit();
+      }
+    });
+
+    // Name validation
+    function isValidName(name) {
+      var regex = /^[a-zA-Z]+$/;
+      return regex.test(name);
+    }
+
+    // Email validation
+    function isValidEmail(email) {
+      var regex = /^\S+@\S+\.\S+$/;
+      return regex.test(email);
+    }
+
+    // Phone number validation
+    function isValidNumber(number) {
+      var regex = /^\d{10}$/;
+      return regex.test(number);
+    }
+  </script>
+</body>
+</html>
